@@ -14,10 +14,10 @@ dracut
 edk2-shell
 inetutils
 less
-linux
+linux-lts
 linux-firmware
 linux-firmware-marvell
-linux-headers
+linux-lts-headers
 logrotate
 lsb-release
 man-db

@@ -62,12 +62,14 @@ echo "------------------" >> "/etc/motd"
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
+bootctl update
+
 # Enable systemd services
 # --> now in airootfs/etc/systemd/system/multi-user.target.wants
 #systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
-#systemctl enable vboxservice.service vmtoolsd.service vmware-vmblock-fuse.service
-#systemctl enable intel.service
 systemctl set-default multi-user.target
+#systemctl enable intel.service
+
 
 # Set wallpaper for live-session and original for installed system
 mv "endeavouros-wallpaper.png" "/etc/calamares/files/endeavouros-wallpaper.png"
@@ -86,7 +88,7 @@ mv "/usr/lib/modules-load.d/nvidia-utils.conf" "/etc/calamares/files/nv-modules-
 # Get extra drivers!
 mkdir "/opt/extra-drivers"
 pacman -Syy
-pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168
+pacman -Sw --noconfirm --cachedir "/opt/extra-drivers" r8168-lts
 
 # install packages
 mkdir -p "/usr/share/packages"
