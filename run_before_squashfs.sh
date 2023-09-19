@@ -62,13 +62,12 @@ echo "------------------" >> "/etc/motd"
 pacman -U --noconfirm -- "/root/packages/"*".pkg.tar.zst"
 rm -rf "/root/packages/"
 
-bootctl update
 
 # Enable systemd services
 # --> now in airootfs/etc/systemd/system/multi-user.target.wants
 #systemctl enable NetworkManager.service systemd-timesyncd.service bluetooth.service firewalld.service
-systemctl set-default multi-user.target
 #systemctl enable intel.service
+systemctl set-default multi-user.target
 
 
 # Set wallpaper for live-session and original for installed system
